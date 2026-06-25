@@ -1,0 +1,21 @@
+name: medallion_demo
+version: 1.0.0
+config-version: 2
+profile: medallion_demo
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+models:
+  medallion_demo:
+    +persist_docs:
+      relation: true
+      columns: true
+    silver:
+      +materialized: incremental
+      +schema: SILVER
+      +on_schema_change: sync_all_columns
+      +incremental_strategy: merge
+    gold:
+      +materialized: table
+      +schema: GOLD

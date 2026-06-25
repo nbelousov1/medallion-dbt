@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: Conformed customer dimension enriched with web and ticket activity.
+    columns:
+      - name: customer_sk
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null, unique]
+  - name: dim_product
+    description: Conformed product dimension.
+    columns:
+      - name: product_sk
+        tests: [not_null, unique]
+      - name: product_id
+        tests: [not_null, unique]
+  - name: fact_order_line
+    description: Atomic fact table at order-line grain.
+    columns:
+      - name: order_line_sk
+        tests: [not_null, unique]
+      - name: customer_sk
+        tests: [not_null]
+      - name: product_sk
+        tests: [not_null]
+  - name: fact_daily_sales
+    description: Daily sales aggregate by currency.
+  - name: customer_360
+    description: One-row-per-customer analytical view for governance and DQ demonstrations.

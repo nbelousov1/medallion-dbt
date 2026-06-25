@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: MEDALLION_DEMO
+    schema: BRONZE
+    tables:
+      - name: CRM_CUSTOMERS_RAW
+      - name: ERP_ORDERS_RAW
+      - name: MDM_PRODUCTS_RAW
+      - name: WEB_EVENTS_RAW
+      - name: SUPPORT_TICKETS_RAW
